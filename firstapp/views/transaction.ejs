@@ -1,0 +1,54 @@
+
+<h1> Transaction List for <%= user.username %> </h1>
+
+  <div class="row">
+      <p> Here is your list of transactions! </p>
+    
+      <p class="m-2">
+        <a class="btn btn-lg btn-primary"
+            href="/transaction/byCategory">group by category</a>
+
+        <a class="btn btn-lg btn-primary"
+            href="?sortBy=category">sort by category</a>
+        
+        <a class="btn btn-lg btn-primary"
+            href="?sortBy=amount">sort by amount</a>
+
+        <a class="btn btn-lg btn-primary"
+            href="?sortBy=description">sort by description</a>
+
+        <a class="btn btn-lg btn-primary"
+            href="?sortBy=date">sort by date</a>
+        
+      </p>
+        <table class="table">
+
+            <tr>
+                <th>description</th><th>amount</th><th>category</th><th>date</th><th>delete</th><th>edit</th>
+            </tr>
+            <% items.forEach(item => { %>
+            <tr>
+                <td><%= item.description %></td>
+                <td><%= item.amount %></td>
+                <td><%= item.category %></td>
+                <td><%= item.date.toDateString() %></td>
+                <td><a href="/transaction/remove/<%=item._id %>"><i class="bi bi-trash"></i></a></td>
+                <td><a href="/transaction/edit/<%=item._id %>"><i class="bi bi-pencil-square"></i></a></td>
+            </tr>
+            <% }) %>
+        </table>
+</div>
+<div class="row">
+    <h1>Add a new transaction</h1>
+        <form method="post" action="transaction">
+            <input type="text" name="description" placeholder="description">
+            <br>
+            <input type="text" name="amount" placeholder="amount">
+            <br>
+            <input type="text" name="category" placeholder="category">
+            <br>
+            <input type="text" name="date" placeholder="mm/dd/yyyy">
+            <br>
+            <input type="submit" value="store">
+        </form>
+</div>

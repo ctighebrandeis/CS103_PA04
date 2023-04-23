@@ -1,0 +1,18 @@
+<h1>Summary of all Transactions by Category</h1>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>category</th>
+            <th>amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for (const item of keys) { %>
+            <tr>
+                <td><%= item %></td>
+                <td><%= results2[item] %></td>
+            </tr>
+        <% } %>
+
+    </tbody>
+</table>
